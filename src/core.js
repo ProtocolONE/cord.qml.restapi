@@ -1,26 +1,55 @@
-var Core = function() {
-    this._lang = 'en';
-    this._auth = false;
-    this._url = "https://api.gamenet.ru/restapi";
+var Core = function(options) {
+    this._lang = (options && options.lang) || 'ru';
+    this._auth = (options && options.auth) ||false;
+    this._url = (options && options.url) ||"https://api.gamenet.ru/restapi";
 
-    this.__defineSetter__('lang', function(value){
-        this._lang = arg;
+    this.__defineSetter__('lang', function(value) {
+        this._lang = value;
     });
 
-    this.__defineSetter__("auth", function(value){
+    this.__defineSetter__("auth", function(value) {
         this._auth = value;
     });
 
-    this.__defineSetter__("url", function(value){
+    this.__defineSetter__("url", function(value) {
         this._url = value;
     });
 };
 
 Core.instance = undefined;
-Core.execute = function(method, params, auth, successCallback, errorCallback) {
-    if (Core.instance == undefined) {
-        Core.instance = new Core();
+Core.setup = function(options){
+    if (Core.instance === undefined) {
+        Core.instance = new Core(options);
+        return;
     }
+
+    if (options === undefined) {
+        return;
+    }
+
+    if (options.url !== undefined) {
+        Core.instance.url = options.url;
+    };
+
+    if (options.auth !== undefined) {
+        Core.instance.url = options.auth;
+    };
+
+    if (options.lang !== undefined) {
+        Core.instance.url = options.lang;
+    };
+
+    if (options.userId !== undefined) {
+        Core._userId = options.userId;
+    };
+
+    if (options.appKey !== undefined) {
+        Core._appKey = options.appKey;
+    };
+};
+
+Core.execute = function(method, params, auth, successCallback, errorCallback) {
+    Core.setup();
 
     Core.instance.auth = auth;
     Core.instance.execute(method, params, successCallback, errorCallback);
@@ -29,13 +58,14 @@ Core.execute = function(method, params, auth, successCallback, errorCallback) {
 Core._userId = '';
 Core.setUserId = function(value) {
     Core._userId = value;
-} ;
+};
 Core._appKey = '';
 Core.setAppKey = function(value) {
     Core._appKey = value;
 };
 
 Core.prototype = {
+    //Replaced during CI build
     version: "@VERSION",
 
     prepareRequestArgs: function(params) {
@@ -51,9 +81,6 @@ Core.prototype = {
             switch(typeof params[field]) {
                 case 'function':
                     paramValue = '';
-                    break;
-                case 'array':
-                    paramValue = params[field].join(",");
                     break;
                 case 'object':
                 default:
@@ -80,7 +107,7 @@ Core.prototype = {
             }
 
             if (xhr.status !== 200) {
-                if (typeof errorCallback == 'function') {
+                if (typeof errorCallback === 'function') {
                     errorCallback(xhr.status);
                 }
                 return;
@@ -96,7 +123,7 @@ Core.prototype = {
             }
 
             if (!responseObject.hasOwnProperty('response')) {
-                if (typeof errorCallback == 'function') {
+                if (typeof errorCallback === 'function') {
                     errorCallback(0);
                 }
                 return;

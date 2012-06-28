@@ -8,7 +8,6 @@
     </target>
 
     <target name="clean">
-        <delete dir="${project.build.dir}"/>
         <mkdir dir="${project.build.dir}"/>
     </target>
 

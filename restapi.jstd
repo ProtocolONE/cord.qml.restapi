@@ -1,0 +1,8 @@
+load:
+  - src/core.js
+  - src/error.js
+  - src/commands/user.js
+  - src/commands/service.js
+  - test/unit/commands/userTest.js
+  - test/unit/commands/serviceTest.js
+  - test/unit/coreTest.js

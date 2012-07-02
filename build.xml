@@ -12,7 +12,7 @@
     </target>
 
     <target name="concat">
-        <concat destfile="${project.build.dir}/restapi.js" overwrite="yes">
+        <concat destfile="${project.build.dir}/restapi.js" force="yes">
             <filelist dir="./src">
                 <file name="pragma"/>
                 <file name="license.js"/>

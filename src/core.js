@@ -1,7 +1,7 @@
 var Core = function(options) {
-    this._lang = (options && options.lang) || 'ru';
-    this._auth = (options && options.auth) ||false;
-    this._url = (options && options.url) ||"https://api.gamenet.ru/restapi";
+    this._lang = (options && options.lang) ? options.lang : 'ru';
+    this._auth = (options && options.auth) ? options.auth : false;
+    this._url =  (options && options.url) ? options.url : "https://api.gamenet.ru/restapi";
 
     this.__defineSetter__('lang', function(value) {
         this._lang = value;
@@ -19,33 +19,32 @@ var Core = function(options) {
 Core.instance = undefined;
 Core.setup = function(options){
     if (Core.instance === undefined) {
-        Core.instance = new Core(options);
-        return;
+        Core.instance = new Core();
     }
 
     if (options === undefined) {
         return;
     }
 
-    if (options.url !== undefined) {
-        Core.instance.url = options.url;
-    };
-
-    if (options.auth !== undefined) {
-        Core.instance.url = options.auth;
-    };
-
-    if (options.lang !== undefined) {
-        Core.instance.url = options.lang;
-    };
-
-    if (options.userId !== undefined) {
+    if (options.userId) {
         Core._userId = options.userId;
-    };
+    }
 
-    if (options.appKey !== undefined) {
+    if (options.appKey) {
         Core._appKey = options.appKey;
-    };
+    }
+
+    if (options.url) {
+        Core.instance.url = options.url;
+    }
+
+    if (options.auth) {
+        Core.instance.auth = options.auth;
+    }
+
+    if (options.lang) {
+        Core.instance.lang = options.lang;
+    }
 };
 
 Core.execute = function(method, params, auth, successCallback, errorCallback) {

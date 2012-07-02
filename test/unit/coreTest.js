@@ -1,4 +1,10 @@
 TestCase('CoreSyncTestCase' ,{
+    tearDown:function () {
+        if (Core.instance) {
+            delete Core.instance;
+        }
+    },
+
     testPrepareRequestArgs: function() {
         var coreObj = new Core();
         assertEquals("&key=value", coreObj.prepareRequestArgs({key: "value"}));
@@ -12,6 +18,22 @@ TestCase('CoreSyncTestCase' ,{
 
         Core.setAppKey('value');
         assertEquals(Core._appKey, 'value');
+    },
+
+    testSetup: function() {
+        Core.setup({
+            userId: "id",
+            appKey: "key",
+            url: "someUrl",
+            lang: "lang",
+            auth: true
+        });
+
+        assertEquals('id', Core._userId);
+        assertEquals('key', Core._appKey);
+        assertEquals('someUrl', Core.instance._url);
+        assertEquals('lang', Core.instance._lang);
+        assertEquals(true, Core.instance._auth);
     }
 });
 

@@ -14,3 +14,7 @@ User.sendMobileActivationCode = function(phone, successCallback, failedCallback)
 User.validateMobileActivationCode = function(code, successCallback, failedCallback) {
     Core.execute('user.validateMobileActivationCode', {code: code, version: 2}, true, successCallback, failedCallback);
 };
+
+User.getBalance = function(successCallback, failedCallback) {
+    Core.execute('user.getSpeedyInfo', {}, true, successCallback, failedCallback);
+};

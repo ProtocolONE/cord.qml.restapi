@@ -47,8 +47,8 @@ AsyncTestCase("CoreAsyncTest", {
 
     setUp: function () {
         this.coreObj = new Core();
-        Core.setUserId("400001000000065690");
-        Core.setAppKey("e8d6b0a31b408946334f23355ee2a0297f2758ac");
+        Core.setUserId("400001000001634860");
+        Core.setAppKey("c99ebc84714c0c316dd891602dc916d238ef73ed");
     },
 
     testRequest: function (queue) {
@@ -72,7 +72,7 @@ AsyncTestCase("CoreAsyncTest", {
     },
 
     testRequestWithBadAuth: function(queue) {
-        var userId = "400001000000065690";
+        var userId = "400001000001634860";
         queue.call('Send a request', function(callbacks) {
             this.coreObj.execute(
                 "user.getProfile", {profileId : userId}, callbacks.add(this.onBodyReceived));
@@ -84,7 +84,7 @@ AsyncTestCase("CoreAsyncTest", {
     },
 
     testRequestWithRightAuth: function(queue) {
-        var userId = "400001000000065690";
+        var userId = "400001000001634860";
         queue.call('Send a request', function(callbacks) {
             this.coreObj.auth = true;
             this.coreObj.execute("user.getProfile", {profileId : userId}, callbacks.add(this.onBodyReceived));

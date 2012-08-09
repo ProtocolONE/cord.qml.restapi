@@ -3,6 +3,8 @@ load:
   - src/error.js
   - src/commands/user.js
   - src/commands/service.js
+  - src/commands/games.js
   - test/unit/commands/userTest.js
   - test/unit/commands/serviceTest.js
+  - test/unit/commands/gamesTest.js
   - test/unit/coreTest.js

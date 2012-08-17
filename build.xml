@@ -16,7 +16,13 @@
             <filelist dir="./src">
                 <file name="pragma"/>
                 <file name="license.js"/>
+            </filelist>
+            <fileset dir="./lib">
+                <include name="*.js"/>
+            </fileset>
+            <filelist dir="./src">
                 <file name="error.js"/>
+                <file name="request.js"/>
                 <file name="core.js"/>
             </filelist>
             <fileset dir="./src">

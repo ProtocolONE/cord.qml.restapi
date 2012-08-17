@@ -95,19 +95,25 @@ Core.prototype = {
     },
 
     execute:  function(method, params, successCallback, errorCallback) {
-        var self = this,
-            xhr = new XMLHttpRequest(),
-            responseObject,
-            stringParams;
+        var responseObject, params, stringParams;
 
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState !== 4) { // full body received
-                return;
-            }
+        stringParams = "?method=" + method
+            + "&format=json&lang=" + this._lang
+            + this.prepareRequestArgs(params);
 
-            if (xhr.status !== 200) {
+        if (this._auth && Core._userId.length && Core._appKey.length) {
+            stringParams += "&userId=" + Core._userId + "&appKey=" + Core._appKey;
+        }
+
+        params = {
+            method: (stringParams.length < 2048) ? 'get' : 'post',
+            uri: new Uri(this._url + stringParams)
+        };
+
+        http.request(params, function(response) {
+            if (response.status !== 200) {
                 if (typeof errorCallback === 'function') {
-                    errorCallback(xhr.status);
+                    errorCallback(response.status);
                 }
                 return;
             }
@@ -117,7 +123,7 @@ Core.prototype = {
             }
 
             try {
-                responseObject = eval('(' + xhr.responseText + ')');
+                responseObject = JSON.parse(response.body);
             } catch (e) {
             }
 
@@ -129,23 +135,7 @@ Core.prototype = {
             }
 
             successCallback(responseObject.response);
-        };
-
-        stringParams = "method=" + method
-            + "&format=json&lang=" + this._lang
-            + this.prepareRequestArgs(params);
-
-        if (this._auth && Core._userId.length && Core._appKey.length) {
-            stringParams += "&userId=" + Core._userId + "&appKey=" + Core._appKey;
-        }
-
-        if (stringParams.length < 2048) {
-            xhr.open('GET', this._url + '?' + stringParams);
-            xhr.send(null);
-        } else {
-            xhr.open('POST', this._url);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.send(stringParams);
-        }
+        });
     }
-};
+}
+

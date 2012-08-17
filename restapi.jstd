@@ -1,10 +1,14 @@
 load:
+  - lib/jsuri-1.1.2.js
+  - src/request.js
   - src/core.js
   - src/error.js
   - src/commands/user.js
   - src/commands/service.js
   - src/commands/games.js
+  - src/commands/virality.js
   - test/unit/commands/userTest.js
   - test/unit/commands/serviceTest.js
   - test/unit/commands/gamesTest.js
+  - test/unit/requestTest.js
   - test/unit/coreTest.js

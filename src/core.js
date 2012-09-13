@@ -77,6 +77,10 @@ Core.prototype = {
                 continue;
             }
 
+            if (field === 'restapiUrl') {
+                continue;
+            }
+
             switch(typeof params[field]) {
                 case 'function':
                     paramValue = '';
@@ -95,7 +99,7 @@ Core.prototype = {
     },
 
     execute:  function(method, params, successCallback, errorCallback) {
-        var responseObject, params, stringParams;
+        var responseObject, internalParams, stringParams;
 
         stringParams = "?method=" + method
             + "&format=json&lang=" + this._lang
@@ -105,12 +109,12 @@ Core.prototype = {
             stringParams += "&userId=" + Core._userId + "&appKey=" + Core._appKey;
         }
 
-        params = {
+        internalParams = {
             method: (stringParams.length < 2048) ? 'get' : 'post',
-            uri: new Uri(this._url + stringParams)
+            uri: new Uri((params.restapiUrl || this._url) + stringParams)
         };
 
-        http.request(params, function(response) {
+        http.request(internalParams, function(response) {
             if (response.status !== 200) {
                 if (typeof errorCallback === 'function') {
                     errorCallback(response.status);

@@ -14,7 +14,6 @@ AsyncTestCase("GamesAsyncTest", {
         });
 
         queue.call('Assert the response', function() {
-            console.log(JSON.stringify(response.announcement));
             assertNotUndefined(response.announcement);
         });
     }

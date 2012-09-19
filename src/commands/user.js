@@ -18,3 +18,21 @@ User.validateMobileActivationCode = function(code, successCallback, failedCallba
 User.getBalance = function(successCallback, failedCallback) {
     Core.execute('user.getSpeedyInfo', {}, true, successCallback, failedCallback);
 };
+
+User.validateNickname = function(nickname, successCallback, failedCallback) {
+    Core.execute('user.validateMainInfo', { nickname : nickname }, true, successCallback, failedCallback);
+};
+
+User.validateTechNickname = function(techname, successCallback, failedCallback) {
+    Core.execute('user.validateMainInfo', { techname : techname }, true, successCallback, failedCallback);
+};
+
+// тестирование этого метода требует регистрацию новых пользователей - что не хочется
+User.saveNickname = function(nickname, successCallback, failedCallback) {
+    Core.execute('user.saveMainInfo', { nickname : nickname }, true, successCallback, failedCallback);
+};
+
+// тестирование этого метода требует регистрацию новых пользователей - что не хочется
+User.saveTechNickname = function(techname, successCallback, failedCallback) {
+    Core.execute('user.saveMainInfo', { techname : techname }, true, successCallback, failedCallback);
+};

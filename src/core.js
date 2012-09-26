@@ -1,7 +1,7 @@
 var Core = function(options) {
     this._lang = (options && options.lang) ? options.lang : 'ru';
     this._auth = (options && options.auth) ? options.auth : false;
-    this._url =  (options && options.url) ? options.url : "https://api.gamenet.ru/restapi";
+    this._url =  (options && options.url) ? options.url : "https://api.gamenet.ru:7443/restapi";
 
     this.__defineSetter__('lang', function(value) {
         this._lang = value;

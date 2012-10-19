@@ -1,6 +1,14 @@
 var User = function() {
 };
 
+User.getMainInfo = function(successCallback, failedCallback) {
+    Core.execute('user.getMainInfo', {}, true, successCallback, failedCallback);
+};
+
+User.getSpeedyInfo = function(successCallback, failedCallback) {
+    Core.execute('user.getSpeedyInfo', {}, true, successCallback, failedCallback);
+};
+
 User.getProfile = function(profiles, successCallback, failedCallback) {
     Core.execute('user.getProfile', {profileId : profiles, shortInfo : 1}, true, successCallback, failedCallback);
 };

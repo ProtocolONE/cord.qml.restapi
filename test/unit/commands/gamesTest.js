@@ -16,5 +16,69 @@ AsyncTestCase("GamesAsyncTest", {
         queue.call('Assert the response', function() {
             assertNotUndefined(response.announcement);
         });
+    },
+	
+    testSetSteamId: function(queue) {
+		var setResponse,
+		    getResponse,
+			steamId = "someSteamId";
+
+        queue.call('Send a request', function(callbacks) {
+            Games.setSteamId(steamId, true, callbacks.add(function(body){
+                setResponse = body;
+            }));
+            User.getMainInfo(callbacks.add(function(body){
+                getResponse = body;
+            }));			
+        });
+
+        queue.call('Assert the response', function() {
+            assertNotUndefined(setResponse);
+            assertNotUndefined(getResponse);
+            assertEquals(setResponse.result, 1);
+            assertEquals(getResponse.mainInfo.steamId, steamId);
+        });
+    },
+
+    testGetCSWeaponsStat: function(queue) {
+        var response;
+
+        queue.call('Send a request', function(callbacks) {
+            Games.getCSWeaponsStat(callbacks.add(function(body){
+                response = body;
+            }));
+        });
+
+        queue.call('Assert the response', function() {
+            assertNotUndefined(response.result);
+        });
+    },
+
+    testGetCSMapsStat: function(queue) {
+        var response;
+
+        queue.call('Send a request', function(callbacks) {
+            Games.getCSMapsStat(callbacks.add(function(body){
+                response = body;
+            }));
+        });
+
+        queue.call('Assert the response', function() {
+            assertNotUndefined(response.result);
+        });
+    },
+
+    testGetCSCharStat: function(queue) {
+        var response;
+
+        queue.call('Send a request', function(callbacks) {
+            Games.getCSCharStat(callbacks.add(function(body){
+                response = body;
+            }));
+        });
+
+        queue.call('Assert the response', function() {
+            assertNotUndefined(response.result);
+        });
     }
 });

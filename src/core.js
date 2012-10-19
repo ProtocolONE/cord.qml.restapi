@@ -117,6 +117,7 @@ Core.prototype = {
         };
 
         http.request(internalParams, function(response) {
+
             if (response.status !== 200) {
                 if (typeof errorCallback === 'function') {
                     errorCallback(response.status);

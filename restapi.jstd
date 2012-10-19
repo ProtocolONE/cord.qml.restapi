@@ -7,10 +7,8 @@ load:
   - src/commands/service.js
   - src/commands/games.js
   - src/commands/virality.js
-  - src/commands/wall.js
-  - test/unit/commands/userTest.js
-  - test/unit/commands/serviceTest.js
+  - src/commands/social.js
   - test/unit/commands/gamesTest.js
-  - test/unit/commands/wallTest.js
-  - test/unit/requestTest.js
-  - test/unit/coreTest.js
+  - test/unit/commands/serviceTest.js
+  - test/unit/commands/userTest.js
+  - test/unit/commands/socialTest.js

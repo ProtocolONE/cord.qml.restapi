@@ -24,6 +24,7 @@ AsyncTestCase("UserAsyncTest", {
 
         queue.call('Send a request', function(callbacks) {
             User.getBalance(callbacks.add(function(body){
+                console.log(1111)
                 response = body;
             }));
         });

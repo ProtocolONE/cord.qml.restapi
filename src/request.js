@@ -17,6 +17,7 @@ http.request = function(options, callback) {
             userAgent = options.userAgent;
         }
     } else {
+
         throw new Exception('Wrong options');
     }
 

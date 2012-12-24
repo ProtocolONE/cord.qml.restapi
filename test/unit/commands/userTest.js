@@ -1,7 +1,7 @@
 AsyncTestCase("UserAsyncTest", {
     setUp: function () {
-        Core.setUserId("400001000012483830");
-        Core.setAppKey("0f9bdd2498d4eae40d16db171d8c46212636a5a7");
+        Core.setUserId("400001000001634860");
+        Core.setAppKey("4c2f65777d38eb07d32d111061005dcd5a119150");
     },
 
     testGetProfile: function(queue) {

@@ -1,7 +1,7 @@
 AsyncTestCase("GamesAsyncTest", {
     setUp: function () {
         Core.setUserId("400001000001634860");
-        Core.setAppKey("c99ebc84714c0c316dd891602dc916d238ef73ed");
+        Core.setAppKey("4c2f65777d38eb07d32d111061005dcd5a119150");
     },
 
     testGetAnnouncement: function(queue) {
@@ -29,7 +29,7 @@ AsyncTestCase("GamesAsyncTest", {
             }));
             User.getMainInfo(callbacks.add(function(body){
                 getResponse = body;
-            }));			
+            }));
         });
 
         queue.call('Assert the response', function() {

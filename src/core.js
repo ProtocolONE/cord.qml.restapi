@@ -99,10 +99,12 @@ Core.prototype = {
     },
 
     execute:  function(method, params, successCallback, errorCallback) {
-        var responseObject, internalParams, stringParams;
+        var responseObject, internalParams, stringParams, format, response;
+
+        format = params.format || 'json';
 
         stringParams = "?method=" + method
-            + "&format=json&lang=" + this._lang
+            + "&format=" + format + "&lang=" + this._lang
             + this.prepareRequestArgs(params);
 
         if (this._auth && Core._userId.length && Core._appKey.length) {
@@ -126,19 +128,25 @@ Core.prototype = {
                 return;
             }
 
-            try {
-                responseObject = JSON.parse(response.body);
-            } catch (e) {
-            }
-
-            if (!responseObject.hasOwnProperty('response')) {
-                if (typeof errorCallback === 'function') {
-                    errorCallback(0);
+            if (format === 'json') {
+                try {
+                    responseObject = JSON.parse(response.body);
+                } catch (e) {
                 }
+
+                if (!responseObject.hasOwnProperty('response')) {
+                    if (typeof errorCallback === 'function') {
+                        errorCallback(0);
+                    }
+                    return;
+                }
+
+                successCallback(responseObject.response);
                 return;
             }
 
-            successCallback(responseObject.response);
+            successCallback(response.body);
+
         });
     }
 }

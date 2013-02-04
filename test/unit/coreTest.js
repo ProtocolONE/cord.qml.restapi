@@ -47,8 +47,8 @@ AsyncTestCase("CoreAsyncTest", {
 
     setUp: function () {
         this.coreObj = new Core();
-        Core.setUserId("400001000001634860");
-        Core.setAppKey("c99ebc84714c0c316dd891602dc916d238ef73ed");
+        Core.setUserId("400001000012483830");
+        Core.setAppKey("0f9bdd2498d4eae40d16db171d8c46212636a5a7");
     },
 
     testRequest: function (queue) {

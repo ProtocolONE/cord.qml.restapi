@@ -30,3 +30,7 @@ Games.getCSMapsStat = function(successCallback, failedCallback) {
 Games.getCSCharStat = function(successCallback, failedCallback) {
     Core.execute('games.getCSCharStat', {}, true, successCallback, failedCallback);
 };
+
+Games.getFacts = function(successCallback, failedCallback) {
+    Core.execute('games.getFacts', {version: 2}, false, successCallback, failedCallback);
+};

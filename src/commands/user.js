@@ -44,3 +44,8 @@ User.saveNickname = function(nickname, successCallback, failedCallback) {
 User.saveTechNickname = function(techname, successCallback, failedCallback) {
     Core.execute('user.saveMainInfo', { techname : techname }, true, successCallback, failedCallback);
 };
+
+// тестирование этого метода требует получение актуальных промо ключей - что не хочется
+User.activatePromoKey = function(promoKey, successCallback, failedCallback) {
+    Core.execute('user.activatePromoKey', { key : promoKey }, true, successCallback, failedCallback);
+};

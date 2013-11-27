@@ -2,7 +2,7 @@ var Games = function() {
 };
 
 Games.getAnnouncement = function(successCallback, failedCallback) {
-    Core.execute('games.getAnnouncement', { version: 2 }, false, successCallback, failedCallback);
+    Core.execute('games.getAnnouncement', { version: 2 }, true, successCallback, failedCallback);
 };
 
 // Метод используется для особой внутренней утилиты. В продакшене не использовать.

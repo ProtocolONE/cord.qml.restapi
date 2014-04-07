@@ -3,6 +3,7 @@ load:
   - src/request.js
   - src/core.js
   - src/error.js
+  - src/commands/billing.js
   - src/commands/user.js
   - src/commands/premium.js
   - src/commands/service.js
@@ -14,3 +15,8 @@ load:
   - test/unit/commands/serviceTest.js
   - test/unit/commands/userTest.js
   - test/unit/commands/socialTest.js
+  - test/unit/commands/wallTest.js
+  - test/unit/commands/billingTest.js
+  - test/unit/coreTest.js
+  - test/unit/jsonTest.js
+  - test/unit/requestTest.js

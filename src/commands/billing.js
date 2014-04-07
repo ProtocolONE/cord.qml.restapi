@@ -9,3 +9,9 @@ Billing.purchaseItem = function(game, item, itemCount, successCallback, failedCa
 		count: itemCount
 	}, true, successCallback, failedCallback);
 };
+
+Billing.isInGameRefillAvailable = function(successCallback, failedCallback) {
+    Core.execute('billing.isInGameRefillAvailable', {
+        version: 1
+    }, true, successCallback, failedCallback);
+};

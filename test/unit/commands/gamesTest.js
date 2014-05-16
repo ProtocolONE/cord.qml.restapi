@@ -32,5 +32,20 @@ AsyncTestCase("GamesAsyncTest", {
         queue.call('Assert the response', function() {
             assertNotUndefined(response.facts);
         });
+    },
+
+    testGetAdvertising: function(queue) {
+        var response;
+
+        queue.call('Send a request', function(callbacks) {
+            Games.getAdvertising(callbacks.add(function(body){
+                response = body;
+            }));
+        });
+
+        queue.call('Assert the response', function() {
+            assertNotUndefined(response.banners);
+        });
     }
+
 });

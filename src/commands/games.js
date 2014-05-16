@@ -18,3 +18,11 @@ Games.getMaintenance = function(successCallback, failedCallback) {
 Games.getFacts = function(successCallback, failedCallback) {
     Core.execute('games.getFacts', {version: 2}, false, successCallback, failedCallback);
 };
+
+Games.getAdvertising = function(game, successCallback, failedCallback) {
+    Core.execute('games.getAdvertising', {
+		gameId: game,
+		version: 2
+	},
+	false, successCallback, failedCallback);
+};

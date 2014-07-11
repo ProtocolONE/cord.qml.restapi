@@ -46,6 +46,20 @@ AsyncTestCase("GamesAsyncTest", {
         queue.call('Assert the response', function() {
             assertNotUndefined(response.banners);
         });
+    },
+
+    testGetGallery: function(queue) {
+        var response;
+
+        queue.call('Send a request', function(callbacks) {
+            Games.getGallery("92", callbacks.add(function(body){
+                response = body;
+            }));
+        });
+
+        queue.call('Assert the response', function() {
+            assertNotUndefined(response.gallery);
+        });
     }
 
 });

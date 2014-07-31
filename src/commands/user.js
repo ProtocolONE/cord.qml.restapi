@@ -49,3 +49,8 @@ User.saveTechNickname = function(techname, successCallback, failedCallback) {
 User.activatePromoKey = function(promoKey, successCallback, failedCallback) {
     Core.execute('user.activatePromoKey', { key : promoKey }, true, successCallback, failedCallback);
 };
+
+User.search = function(query, priorityForFriends, successCallback, failedCallback) {
+    Core.execute('user.search', { q : query, priorityForFriends: priorityForFriends }, true, successCallback, failedCallback);
+};
+

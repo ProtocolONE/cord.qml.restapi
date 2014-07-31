@@ -4,6 +4,21 @@ AsyncTestCase("UserAsyncTest", {
         Core.setAppKey("4c2f65777d38eb07d32d111061005dcd5a119150");
     },
 
+    testSearch: function(queue) {
+        var userId = "400001000012483830",
+            response;
+
+        queue.call('Send a request', function(callbacks) {
+            User.search("a", false, callbacks.add(function(body){
+                response = body;
+            }));
+        });
+
+        queue.call('Assert the response', function() {
+            assertNotUndefined(userId, response);
+        });
+    },
+
     testGetProfile: function(queue) {
         var userId = "400001000012483830",
             response;

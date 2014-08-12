@@ -18,5 +18,4 @@ load:
   - test/unit/commands/wallTest.js
   - test/unit/commands/billingTest.js
   - test/unit/coreTest.js
-  - test/unit/jsonTest.js
   - test/unit/requestTest.js

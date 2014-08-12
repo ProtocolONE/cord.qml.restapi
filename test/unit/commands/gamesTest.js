@@ -38,7 +38,7 @@ AsyncTestCase("GamesAsyncTest", {
         var response;
 
         queue.call('Send a request', function(callbacks) {
-            Games.getAdvertising(callbacks.add(function(body){
+            Games.getAdvertising("71", callbacks.add(function(body){
                 response = body;
             }));
         });

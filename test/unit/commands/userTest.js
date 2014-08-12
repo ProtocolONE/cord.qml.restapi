@@ -79,5 +79,17 @@ AsyncTestCase("UserAsyncTest", {
         queue.call('Assert the response', function() {
             assertEquals(response.result, 1)
         });
+    },
+    testGetPlayedInfo: function(queue) {
+        var response;
+        queue.call('Send a request', function(callbacks) {
+            User.getPlayedInfo('400001000005869460', callbacks.add(function(body){
+                response = body;
+            }));
+        });
+
+        queue.call('Assert the response', function() {
+            assertNotUndefined(response);
+        });
     }
 });

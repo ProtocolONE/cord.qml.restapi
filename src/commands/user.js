@@ -13,6 +13,10 @@ User.getProfile = function(profiles, successCallback, failedCallback) {
     Core.execute('user.getProfile', {profileId: profiles, shortInfo: 1, achievements: 1}, true, successCallback, failedCallback);
 };
 
+User.getPlayedInfo = function(profiles, successCallback, failedCallback) {
+    Core.execute('user.getProfile', {profileId: profiles, playedGames: 1}, true, successCallback, failedCallback);
+};
+
 //Следующий метод не должен тестироваться по понятным причинам
 User.sendMobileActivationCode = function(phone, successCallback, failedCallback) {
     Core.execute('user.sendMobileActivationCode', {phone: phone, version: 2}, true, successCallback, failedCallback);

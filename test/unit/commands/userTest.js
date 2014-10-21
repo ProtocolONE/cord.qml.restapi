@@ -51,8 +51,8 @@ AsyncTestCase("UserAsyncTest", {
 
     testValidateNickname: function(queue) {
         var response;
-        Core.setUserId("400001000012483830");
-        Core.setAppKey("0f9bdd2498d4eae40d16db171d8c46212636a5a7");
+        Core.setUserId("400007000068924890");
+        Core.setAppKey("d0876633b14a43cbbf4ac5df9e52bcd776c47461");
 
         queue.call('Send a request', function(callbacks) {
             User.validateNickname('fakesomenick22everexists', callbacks.add(function(body){
@@ -67,8 +67,8 @@ AsyncTestCase("UserAsyncTest", {
 
     testValidateTechNickname: function(queue) {
         var response;
-        Core.setUserId("400001000012483830");
-        Core.setAppKey("0f9bdd2498d4eae40d16db171d8c46212636a5a7");
+        Core.setUserId("400007000068924890");
+        Core.setAppKey("d0876633b14a43cbbf4ac5df9e52bcd776c47461");
 
         queue.call('Send a request', function(callbacks) {
             User.validateTechNickname('fakesomenickeverexists', callbacks.add(function(body){

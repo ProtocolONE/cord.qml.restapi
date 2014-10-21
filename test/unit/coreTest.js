@@ -143,5 +143,23 @@ AsyncTestCase("CoreAsyncTest", {
             assertNotUndefined(request2Response.news);
             assertNotUndefined(request3Response.news);
         });
+    },
+
+    testGenericError: function(queue) {
+        var coreObj = new Core(),
+            responseCode;
+
+        coreObj.genericErrorCallback = function(code) {
+            responseCode = code;
+        }
+
+        queue.call('Send a request', function(callbacks) {
+            coreObj.execute("some.BadRequest", {}, callbacks.add(this.onBodyReceived));
+        });
+
+        queue.call('Assert the response', function() {
+            assertEquals(Error.INVALID_REQUEST, this.responseObject.error.code);
+            assertEquals(Error.INVALID_REQUEST, responseCode);
+        });
     }
 });

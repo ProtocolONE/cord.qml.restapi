@@ -32,7 +32,7 @@
     </target>
 
     <target name="unit">
-        <java jar="test/JsTestDriver-1.3.4.b.jar"
+        <java jar="test/JsTestDriver-1.3.5.jar"
               fork="true"
               failonerror="true"
               maxmemory="256m">
@@ -41,6 +41,8 @@
             <arg value="--reset"/>
             <arg value="--tests"/>
             <arg value="all"/>
+            <arg value="--runnerMode"/>
+            <arg value="DEBUG"/>
             <arg value="--testOutput"/>
             <arg value="./"/>
             <arg value="--port"/>
@@ -50,6 +52,9 @@
         </java>
         <exec executable="taskkill.exe">
             <arg line="/F /IM chrome.exe"/>
+        </exec>
+        <exec executable="taskkill.exe">
+            <arg line="/F /IM firefox.exe"/>
         </exec>
     </target>
 

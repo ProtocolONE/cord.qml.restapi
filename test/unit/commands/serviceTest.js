@@ -16,5 +16,33 @@ AsyncTestCase("ServiceAsyncTest", {
         queue.call('Assert the response', function() {
             assertNotUndefined(response[0]);
         });
+    },
+
+    testGetUi: function(queue) {
+        var response;
+
+        queue.call('Send a request', function(callbacks) {
+            Service.getUi(callbacks.add(function(body){
+                response = body;
+            }));
+        });
+
+        queue.call('Assert the response', function() {
+            assertNotUndefined(response);
+        });
+    },
+
+    testGetGrid: function(queue) {
+        var response;
+
+        queue.call('Send a request', function(callbacks) {
+            Service.getGrid(callbacks.add(function(body){
+                response = body;
+            }));
+        });
+
+        queue.call('Assert the response', function() {
+            assertNotUndefined(response);
+        });
     }
 });

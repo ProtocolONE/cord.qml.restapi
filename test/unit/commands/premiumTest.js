@@ -17,21 +17,5 @@ AsyncTestCase("PremiumAsyncTest", {
         queue.call('Assert the response', function() {
             assertNotUndefined('Duration', response.duration);
         });
-    },
-
-    testGetGrid: function(queue) {
-        var response;
-
-        queue.call('Send a request', function(callbacks) {
-            Premium.getGrid(callbacks.add(function(body){
-                response = body;
-            }));
-        });
-
-        queue.call('Assert the response', function() {
-            assertUndefined('Grid', response.error)
-            assertNotUndefined('Grid', response);
-            assertArray('Response should be array', response)
-        });
     }
 });

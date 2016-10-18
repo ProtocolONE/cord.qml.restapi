@@ -10,6 +10,8 @@ load:
   - src/commands/games.js
   - src/commands/virality.js
   - src/commands/social.js
+  - src/commands/wall.js
+  - src/commands/misc.js
   - test/unit/commands/gamesTest.js
   - test/unit/commands/premiumTest.js
   - test/unit/commands/serviceTest.js
@@ -17,5 +19,6 @@ load:
   - test/unit/commands/socialTest.js
   - test/unit/commands/wallTest.js
   - test/unit/commands/billingTest.js
+  - test/unit/commands/miscTest.js
   - test/unit/coreTest.js
   - test/unit/requestTest.js

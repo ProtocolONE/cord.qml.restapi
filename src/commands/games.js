@@ -34,3 +34,8 @@ Games.getGallery = function(game, successCallback, failedCallback) {
         },
         false, successCallback, failedCallback);
 };
+
+Games.getThemes = function(successCallback, failedCallback) {
+    Core.execute('games.getThemes', {}, false, successCallback, failedCallback);
+};
+

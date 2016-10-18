@@ -91,5 +91,18 @@ AsyncTestCase("UserAsyncTest", {
         queue.call('Assert the response', function() {
             assertNotUndefined(response);
         });
+    },
+    testGetChars: function(queue) {
+        var response;
+        queue.call('Send a request', function(callbacks) {
+            User.getChars('400001000005869460', callbacks.add(function(body){
+                response = body;
+            }));
+        });
+
+        queue.call('Assert the response', function() {
+            assertNotUndefined(response);
+            assertNotUndefined(response[0]);
+        });
     }
 });

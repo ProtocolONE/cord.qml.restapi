@@ -14,7 +14,7 @@ AsyncTestCase("ServiceAsyncTest", {
         });
 
         queue.call('Assert the response', function() {
-            assertNotUndefined(response[0]);
+            assertArray(response);
         });
     },
 
@@ -43,6 +43,35 @@ AsyncTestCase("ServiceAsyncTest", {
 
         queue.call('Assert the response', function() {
             assertNotUndefined(response);
+        });
+    },
+
+    testGetItems: function(queue) {
+        var response;
+
+        queue.call('Send a request', function(callbacks) {
+            Service.getItems(30000000000, 3, callbacks.add(function(body){
+                response = body;
+            }));
+        });
+
+        queue.call('Assert the response', function() {
+            assertNotUndefined(response[0]);
+        });
+    },
+
+    testGetPromoKeysSettings: function(queue) {
+        var response;
+
+        queue.call('Send a request', function(callbacks) {
+            Service.getPromoKeysSettings(30000000000, callbacks.add(function(body){
+                response = body;
+            }));
+        });
+
+        queue.call('Assert the response', function() {
+            assertNotUndefined(response);
+            assertEquals(1021, response.gameId);
         });
     }
 });

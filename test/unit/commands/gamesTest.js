@@ -60,6 +60,21 @@ AsyncTestCase("GamesAsyncTest", {
         queue.call('Assert the response', function() {
             assertNotUndefined(response.gallery);
         });
+    },
+
+    testGetThemes: function(queue) {
+        var response;
+
+        queue.call('Send a request', function(callbacks) {
+            Games.getThemes(callbacks.add(function(body){
+                response = body;
+            }));
+        });
+
+        queue.call('Assert the response', function() {
+            assertNotUndefined(response.themes);
+            assertArray(response.themes);
+        });
     }
 
 });

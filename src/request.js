@@ -1,6 +1,9 @@
 var http = function() {
 };
 
+// INFO debug output
+http.logRequest = false;
+
 http.request = function(options, callback) {
     var xhr = new XMLHttpRequest(),
         method = options.method || 'get',
@@ -24,6 +27,18 @@ http.request = function(options, callback) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState !== 4) { // full body received
             return;
+        }
+
+        if (http.logRequest) {
+            // INFO debug output
+            var tmp = 'Request: ' + uri.toString();
+            try {
+                var debugResponseObject = JSON.parse(xhr.responseText);
+                tmp += '\nResponse: \n' + JSON.stringify(debugResponseObject, null, 2)
+            } catch(e) {
+                tmp += '\nResponse: \n' + xhr.responseText
+            }
+            console.log(tmp);
         }
 
         callback({status: xhr.status, header: xhr.getAllResponseHeaders(), body: xhr.responseText});

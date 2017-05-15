@@ -61,3 +61,7 @@ User.search = function(query, priorityForFriends, successCallback, failedCallbac
 User.getChars = function(userId, successCallback, failedCallback) {
     Core.execute('user.getChars', { targetId: userId }, true, successCallback, failedCallback);
 };
+
+User.getCharsByGame = function(userId, gameId, successCallback, failedCallback) {
+    Core.execute('user.getChars', { targetId: userId, gameId: gameId }, true, successCallback, failedCallback);
+};

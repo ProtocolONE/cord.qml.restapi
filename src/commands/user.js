@@ -65,3 +65,16 @@ User.getChars = function(userId, successCallback, failedCallback) {
 User.getCharsByGame = function(userId, gameId, successCallback, failedCallback) {
     Core.execute('user.getChars', { targetId: userId, gameId: gameId }, true, successCallback, failedCallback);
 };
+
+User.getIgnoreList = function(successCallback, failedCallback) {
+    Core.execute('user.getIgnoreList', { }, true, successCallback, failedCallback);
+};
+
+// target - Идентификатор, никнейм или ссылка на профиль игнорируемого пользователя
+User.addToIgnoreList = function(target, successCallback, failedCallback) {
+    Core.execute('user.addToIgnoreList', { target: target }, true, successCallback, failedCallback);
+};
+
+User.removeFromIgnoreList = function(targetId, successCallback, failedCallback) {
+    Core.execute('user.removeFromIgnoreList', { targetId: targetId }, true, successCallback, failedCallback);
+};

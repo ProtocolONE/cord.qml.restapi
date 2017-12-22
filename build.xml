@@ -51,10 +51,10 @@
             <arg value="${chromePath}"/>
         </java>
         <exec executable="taskkill.exe">
-            <arg line="/F /IM chrome.exe"/>
+            <arg line="/F /IM firefox.exe"/>
         </exec>
         <exec executable="taskkill.exe">
-            <arg line="/F /IM firefox.exe"/>
+            <arg line="/F /IM chrome.exe"/>
         </exec>
     </target>
 

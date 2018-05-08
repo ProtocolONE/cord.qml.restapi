@@ -3,7 +3,7 @@
     <property name="project.build.dir" value="./build"/>
     <property name="project.build.version" value="DEFINE_ME_IN_HUDSON"/>
 
-    <target name="build" depends="clean, concat, unit">
+    <target name="build" depends="clean, concat">
         <replace file="${project.build.dir}/restapi.js" token="@VERSION" value="${project.build.version}"/>
     </target>
 

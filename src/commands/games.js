@@ -39,3 +39,10 @@ Games.getThemes = function(successCallback, failedCallback) {
     Core.execute('games.getThemes', {}, false, successCallback, failedCallback);
 };
 
+Games.resetBlackDesertPin = function(code, successCallback, failedCallback) {
+    Core.execute('games.resetBlackDesertPin', {
+        code: code
+    },
+    true, successCallback, failedCallback);
+};
+

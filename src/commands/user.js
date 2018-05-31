@@ -78,3 +78,16 @@ User.addToIgnoreList = function(target, successCallback, failedCallback) {
 User.removeFromIgnoreList = function(targetId, successCallback, failedCallback) {
     Core.execute('user.removeFromIgnoreList', { targetId: targetId }, true, successCallback, failedCallback);
 };
+
+User.getSMSCode = function(successCallback, failedCallback) {
+    Core.execute('user.send2FaKeyViaSms', { }, true, successCallback, failedCallback);
+};
+
+User.getRecoveryKeys = function(successCallback, failedCallback) {
+    Core.execute('user.get2FaRecoveryKeys', { }, true, successCallback, failedCallback);
+};
+
+User.get2FaStatus = function(successCallback, failedCallback) {
+    Core.execute('user.get2FaStatus', { }, true, successCallback, failedCallback);
+};
+

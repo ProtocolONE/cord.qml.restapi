@@ -1,0 +1,26 @@
+{
+  "name": "restapi",
+  "version": "1.0.0",
+  "description": "Qml RestApi for GameNet Application",
+  "main": "src/core.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "lint": "jshint --verbose src/",
+    "test": "njsunit"
+  },
+  "author": "Ilya Tkachenko",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-replace": "^1.0.0",
+    "jshint": "^2.9.5",
+    "minimist": "^1.2.0",
+    "njsunit": "^1.0.12",
+    "xmlhttprequest": "^1.8.0"
+  }
+}

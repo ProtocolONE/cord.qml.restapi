@@ -1,0 +1,21 @@
+module.exports = {
+  enableLog: enableLog,
+  disableLog: disableLog,
+  http: http,
+  Query: Query,
+  Uri: Uri,
+  Error: Error,
+  Core: Core,
+  Auth: Auth,
+  Billing: Billing,
+  Games: Games,
+  Marketing: Marketing,
+  Misc: Misc,
+  Premium: Premium,
+  Service: Service,
+  Social: Social,
+  User: User,
+  Virality: Virality,
+  Wall: Wall
+};
+

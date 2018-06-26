@@ -1,4 +1,4 @@
-var Error = function() {
+var Error = function() { // jshint ignore:line
 };
 
 //UNDONE Это не весь перечень ошибок. При необходимости - добавляйте.

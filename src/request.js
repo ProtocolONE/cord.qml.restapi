@@ -34,9 +34,9 @@ http.request = function(options, callback) {
             var tmp = 'Request: ' + uri.toString();
             try {
                 var debugResponseObject = JSON.parse(xhr.responseText);
-                tmp += '\nResponse: \n' + JSON.stringify(debugResponseObject, null, 2)
+                tmp += '\nResponse: \n' + JSON.stringify(debugResponseObject, null, 2);
             } catch(e) {
-                tmp += '\nResponse: \n' + xhr.responseText
+                tmp += '\nResponse: \n' + xhr.responseText;
             }
             console.log(tmp);
         }
@@ -62,5 +62,5 @@ http.request = function(options, callback) {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send(uri.query().toString().substring(1)); //jsuri return query with '?' always
     }
-}
+};
 

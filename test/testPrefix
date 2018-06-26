@@ -1,0 +1,20 @@
+var TestCase = require('njsunit').TestCase;
+
+var RestApi = require('../../build/RestApi.Test.js'),
+    http = RestApi.http,
+    Query = RestApi.Query,
+    Uri = RestApi.Uri,
+    Error = RestApi.Error,
+    Core = RestApi.Core,
+    Auth = RestApi.Auth,
+    Billing = RestApi.Billing,
+    Games = RestApi.Games,
+    Marketing = RestApi.Marketing,
+    Misc = RestApi.Misc,
+    Premium = RestApi.Premium,
+    Service = RestApi.Service,
+    Social = RestApi.Social,
+    User = RestApi.User,
+    Virality = RestApi.Virality,
+    Wall = RestApi.Wall
+;

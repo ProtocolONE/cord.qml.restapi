@@ -94,7 +94,7 @@ Core.prototype = {
                 case 'function':
                     paramValue = '';
                     break;
-                case 'object':
+//                case 'object':
                 default:
                     paramValue = params[field].toString();
             }
@@ -112,9 +112,9 @@ Core.prototype = {
 
         format = params.format || 'json';
 
-        stringParams = "?method=" + method
-            + "&format=" + format + "&lang=" + this._lang
-            + this.prepareRequestArgs(params);
+        stringParams = "?method=" + method + 
+	    "&format=" + format + "&lang=" + this._lang +
+             this.prepareRequestArgs(params);
 
         if (this._auth && Core._userId.length && Core._appKey.length) {
             stringParams += "&userId=" + Core._userId + "&appKey=" + Core._appKey;
@@ -168,5 +168,4 @@ Core.prototype = {
             successCallback(responseObject.response);
         });
     }
-}
-
+};

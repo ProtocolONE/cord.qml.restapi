@@ -54,6 +54,16 @@ class ServiceAsyncTestCase extends TestCase {
             queue();
         });
     }
+
+    testGetPromoKeysSettings(queue) {
+        Service.getGridById(137, (response) => {
+            this.assertNotNullOrUndefined(response);
+            this.assertNotNullOrUndefined(response[0]);
+            this.assertEqual("137", response[0].gridId);
+            queue();
+        });
+    }
+
 };
 
 module.exports = ServiceAsyncTestCase;

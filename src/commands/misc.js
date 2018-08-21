@@ -1,6 +1,3 @@
-/**
- * Created by Ilya on 18.10.16.
- */
 var Misc = function() {
 };
 

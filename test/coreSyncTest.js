@@ -41,6 +41,38 @@ class CoreSyncTestCase extends TestCase {
         this.assertEqual('lang', Core.instance._lang);
         this.assertEqual(true, Core.instance._auth);
     }
+
+    testCacheCallback(queue) {
+
+        function cacheCallback(params) {
+            if (params.uri.query().getParamValue("method") == "a.a") {
+
+                return {
+                    success: true,
+                    response: JSON.stringify({
+                        response: {
+                            result: 1
+                        }
+                    })
+                }
+            }
+        }
+
+        Core.setup({
+            userId: "id",
+            appKey: "key",
+            url: "someUrl",
+            lang: "lang",
+            auth: true,
+            cacheLookupCallback: cacheCallback
+        });
+
+        Core.execute("a.a", {}, true,  (body) => {
+            this.assertEqual(1, body.result);
+            queue();
+        })
+    }
 }
 
-module.exports = CoreSyncTestCase
+module.exports = CoreSyncTestCase;
+

@@ -35,6 +35,23 @@ class RequestAsyncTestCase extends TestCase {
             queue();
         });
     }
+
+    testHeaderParamse (queue) {
+        RestApi.enableLog();
+        http.request(
+            {
+                method: 'get',
+                uri: new Uri('http://local-auth.protocol.one:3000'),
+                headers: {
+                    Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9'
+                }
+            }, (responseObject) => {
+            this.assertEqual(200, responseObject.status);
+            this.assertNotUndefined(responseObject.header);
+            this.assertNotUndefined(responseObject.body);
+            queue();
+        });
+    }
 };
 
 module.exports = RequestAsyncTestCase;

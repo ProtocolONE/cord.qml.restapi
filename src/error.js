@@ -44,3 +44,15 @@ Error.PAKKANEN_PERMISSION_DENIED = 601;
 Error.PAKKANEN_VK_LINK = 602;
 Error.PAKKANEN_PHONE_VERIFICATION = 603;
 Error.PAKKANEN_VK_LINK_AND_PHONE_VERIFICATION = 604;
+
+
+var ErrorEx = function() { // jshint ignore:line
+};
+
+ErrorEx.Success = 0;
+ErrorEx.UNKNOWN = 1;
+ErrorEx.Unauthorized = 2;
+
+ErrorEx.isSuccess = function(code) { return code == ErrorEx.Success; }
+
+

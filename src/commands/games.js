@@ -1,40 +1,23 @@
 var Games = function() {
 };
 
-Games.getAnnouncement = function(successCallback, failedCallback) {
-    Core.execute('games.getAnnouncement', { version: 2 }, true, successCallback, failedCallback);
+Games.getMaintenance = function(callback) {
+    Core.executeEx('games/maintenance/', 'get', {}, false, {}, callback);
 };
 
-// Метод используется для особой внутренней утилиты. В продакшене не использовать.
-Games.getAnnouncementWithUnpublished = function(successCallback, failedCallback) {
-    Core.execute('games.getAnnouncement', { version: 2, isPublished: 0, rnd: Math.random() }, false, successCallback, failedCallback);
+Games.getNews = function(callback) {
+    Core.executeEx('games/news/', 'get', {}, false, {}, callback);
 };
 
-//Метод сложно протестировать на бою, т.к. расписание и вообще его наличие постоянно меняется
-Games.getMaintenance = function(successCallback, failedCallback) {
-    Core.execute('games.getMaintenance', {}, false, successCallback, failedCallback);
+Games.getGallery = function(gameId, callback) {
+    Core.executeEx('games/gallery/', 'get', {gameId:gameId}, false, {}, callback);
 };
 
-Games.getFacts = function(successCallback, failedCallback) {
-    Core.execute('games.getFacts', {version: 2}, false, successCallback, failedCallback);
+Games.getBanners = function(gameId, callback) {
+    Core.executeEx('games/banners/', 'get', {gameId:gameId}, false, {}, callback);
 };
 
-Games.getAdvertising = function(game, successCallback, failedCallback) {
-    Core.execute('games.getAdvertising', {
-		gameId: game,
-		version: 2
-	},
-	false, successCallback, failedCallback);
+Games.getAnnouncement = function(callback) {
+    Core.executeEx('games/announcement/', 'get', {}, false, {}, callback);
 };
 
-Games.getGallery = function(game, successCallback, failedCallback) {
-    Core.execute('games.getGallery', {
-            gameId: game,
-            version: 1
-        },
-        false, successCallback, failedCallback);
-};
-
-Games.getThemes = function(successCallback, failedCallback) {
-    Core.execute('games.getThemes', {}, false, successCallback, failedCallback);
-};

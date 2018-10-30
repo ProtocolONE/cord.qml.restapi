@@ -44,18 +44,19 @@ class CoreSyncTestCase extends TestCase {
 
     testCacheCallback(queue) {
 
-        function cacheCallback(params) {
+        function cacheCallback(params, cb) {
             if (params.uri.query().getParamValue("method") == "a.a") {
 
-                return {
-                    success: true,
-                    response: JSON.stringify({
-                        response: {
-                            result: 1
-                        }
-                    })
-                }
+                cb(JSON.stringify({
+                    response: {
+                        result: 1
+                    }
+                }));
+
+                return true;
             }
+
+            return false;
         }
 
         Core.setup({

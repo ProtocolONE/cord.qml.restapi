@@ -5,17 +5,9 @@ module.exports = {
   Query: Query,
   Uri: Uri,
   Error: Error,
+  ErrorEx: ErrorEx,
   Core: Core,
-  Auth: Auth,
-  Billing: Billing,
-  Games: Games,
-  Marketing: Marketing,
+  App: App,
   Misc: Misc,
-  Premium: Premium,
-  Service: Service,
-  Social: Social,
-  User: User,
-  Virality: Virality,
-  Wall: Wall
 };
 

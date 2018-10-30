@@ -21,6 +21,7 @@
     "jshint": "^2.9.5",
     "minimist": "^1.2.0",
     "njsunit": "^1.0.12",
-    "xmlhttprequest": "^1.8.0"
+    "xmlhttprequest": "^1.8.0",
+    "websocket": "^1.0.28"
   }
 }
